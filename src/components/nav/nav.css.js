@@ -1,13 +1,14 @@
 import { css } from 'emotion';
 import colors from '../../styles/colors';
 
-const { nephritis, clouds } = colors;
+const { clouds, white, granite, greenSea } = colors;
 
 function getStyles() {
   return css`
     align-items: center;
-    background: ${nephritis};
-    color: ${clouds};
+    border-bottom: 0.1rem solid ${clouds};
+    background: ${white};
+    color: ${granite};
     display: flex;
     height: 5rem;
     justify-content: space-between;
@@ -15,7 +16,7 @@ function getStyles() {
     width: 100%;
 
     & a {
-      color: ${clouds};
+      color: ${greenSea};
       margin: 0.5rem;
     }
   `;

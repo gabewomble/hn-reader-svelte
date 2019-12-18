@@ -1,7 +1,6 @@
 <script>
   export let url;
-
-  let data;
+  export let data;
 
   $: getData(url);
 

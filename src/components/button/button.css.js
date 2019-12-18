@@ -1,8 +1,8 @@
 import { css } from 'emotion';
 
 function getStyles({
-  color,
   background,
+  color,
 }) {
   return css`
     align-items: center;
@@ -11,6 +11,7 @@ function getStyles({
     border: none;
     box-sizing: border-box;
     color: ${color};
+    cursor: pointer;
     display: flex;
     font-size: 0.75rem;
     height: 2rem;
