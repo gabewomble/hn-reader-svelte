@@ -2,6 +2,7 @@
   import Fetch from '../fetch/fetch.svelte';
   import Button from '../button/button.svelte';
   import Article from '../article/article.svelte';
+  import { paginate, incrementPage, decrementPage } from '../../lib/utils/pagination';
   import { colors } from '../../styles';
 
   export let url;
@@ -19,17 +20,12 @@
 
   $: paginated = data ? paginate(data, page, size) : [];
 
-  function paginate(arr, p, s) {
-    const pageNumber = p - 1;
-    return [...arr].slice(pageNumber * s, p * s);
+  function next() {
+    page = incrementPage(page, pageCount);
   }
 
-  function incrementPage() {
-    page = page + (page < pageCount);
-  }
-
-  function decrementPage() {
-    page = page - 1 || page;
+  function prev() {
+    page = decrementPage(page);
   }
 </script>
 
@@ -59,10 +55,10 @@
       <Article {articleId} />
     {/each}
     <div class="buttons">
-      <Button on:click={decrementPage}>
+      <Button on:click={prev}>
         Previous Page
       </Button>
-      <Button on:click={incrementPage}>
+      <Button on:click={next}>
         Next Page
       </Button>
     </div>

@@ -1,4 +1,6 @@
 <script>
+  import { location, link } from 'svelte-spa-router';
+  import { preload } from '../article-details/article-details.svelte';
   import Fetch from '../fetch/fetch.svelte';
   import { GET_ITEM_URL } from '../../lib/constants/urls';
 
@@ -53,6 +55,10 @@
     line-height: 1rem;
   }
 
+  .comments {
+    color: #555;
+  }
+
   .title {
     color: #333;
   }
@@ -62,14 +68,14 @@
   }
 
   .loader .title {
-    background: linear-gradient(135deg, rgba(175,175,175,1) 0%, rgba(89,88,88,1) 100%);
+    background: linear-gradient(135deg, rgba(175,175,175,.5) 0%, rgba(150,150,150,.5) 100%);
     height: 1rem;
     width: 50%;
   }
 
   .loader .comments,
   .loader .author {
-    background: linear-gradient(135deg, rgba(175,175,175,1) 0%, rgba(89,88,88,1) 100%);
+    background: linear-gradient(135deg, rgba(175,175,175,.5) 0%, rgba(150,150,150,.5) 100%);
     height: 1rem;
     width: 5rem;
   }
@@ -88,7 +94,14 @@
       {/if}
       <div class="details">
         <div class="author">By: {data.by}</div>
-        <div class="comments">Comments: {data.descendants || 0}</div>
+        <a
+          href={`${$location}/${articleId || ''}`}
+          use:link
+          class="comments"
+          on:mouseover={() => preload(articleId)}
+        >
+          Comments: {data.descendants || 0}
+        </a>
       </div>
     </div>
   </div>

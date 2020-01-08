@@ -10,6 +10,7 @@ function getStyles() {
     background: ${white};
     color: ${granite};
     display: flex;
+    flex-shrink: 0;
     height: 5rem;
     justify-content: space-between;
     padding: 1rem;

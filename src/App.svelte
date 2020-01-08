@@ -11,8 +11,8 @@
 		display: flex;
 		flex-direction: column;
 		flex: 1;
-		height: 100%;
-		width: 100%;
+		height: 100vh;
+		width: 100vw;
 	}
 
 	section {
@@ -20,6 +20,7 @@
 		display: flex;
 		justify-content: center;
 		overflow: hidden;
+		height: calc(100vh - 5rem);
 		width: 100%;
 	}
 </style>

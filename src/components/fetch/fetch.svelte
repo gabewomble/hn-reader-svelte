@@ -1,6 +1,7 @@
 <script>
   export let url;
   export let data;
+  export let preload;
 
   $: getData(url);
 
@@ -15,7 +16,7 @@
 </script>
 
 
-{#if data !== null}
+{#if data !== null || preload !== undefined}
   <slot name="data-loaded" {data} />
   {:else}
   <slot name="loader">Loading...</slot>
